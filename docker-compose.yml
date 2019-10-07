@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  db-postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: 'bookstore'
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD : 'admin'
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    command: python InternLibrary/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db-postgres
+
+
