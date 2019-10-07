@@ -81,6 +81,7 @@ DATABASES = {
         'NAME': 'bookstore',
         'USER': 'admin',
         'PASSWORD': 'admin',
+        #'HOST': 'localhost',
         'HOST': 'db-postgres',
         'PORT': '5432',
     }
