@@ -10,7 +10,7 @@ class AuthorFilter(filters.FilterSet):
         fields = '__all__'
 
 
-class BookFilterter(filters.FilterSet):
+class BookFilter(filters.FilterSet):
     name = filters.CharFilter(lookup_expr='icontains')
 
     class Meta:
