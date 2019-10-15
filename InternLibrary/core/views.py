@@ -6,8 +6,6 @@ from .filters import AuthorFilter, BookFilter
 from .models import Author, Book
 from .serializers import AuthorSerializer, BookSerializer
 
-
-# Listagem de autores por nome
 class AuthorViewSet(viewsets.ModelViewSet):
     queryset = Author.objects.all().order_by('name')
     serializer_class = AuthorSerializer
@@ -18,8 +16,16 @@ class AuthorViewSet(viewsets.ModelViewSet):
     def book(self, request, pk=None):
         return Response(list(Book.objects.filter(author=pk).values()))
 
+class BookAuthorViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all().order_by('name')
+    serializer_class = AuthorSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_class = AuthorFilter
 
-# Listagem de livros por nome
+    @action(detail=True)
+    def book(self, request, pk=None):
+        return Response(list(Book.objects.filter(author=pk).values()))
+
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all().order_by('name')
     serializer_class = BookSerializer

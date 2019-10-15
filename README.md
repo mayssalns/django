@@ -17,7 +17,6 @@
         - In the first run: `docker-compose up --b -d`
         - Following: `docker-compose up`
 
-
 #### Step 3: Viewing in browser
     
     -  http://0.0.0.0:8000/
