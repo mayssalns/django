@@ -17,7 +17,12 @@
         - In the first run: `docker-compose up --b -d`
         - Following: `docker-compose up`
 
-#### Step 3: Viewing in browser
+#### Step 3: Migrate
+    - `docker exec -it django_app_1 /bin/bash`
+    - `cd InternLibrary`
+    - `python manage.py migrate`
+
+#### Step 4: Viewing in browser
     
     -  http://0.0.0.0:8000/
  

@@ -13,6 +13,8 @@ services:
   app:
     build: .
     command: python InternLibrary/manage.py runserver 0.0.0.0:8000
+    command: python IternLibrary/manage.py makemigrations
+    command: python InternLibrary/manage.py migrate
     volumes:
       - .:/code
     ports:
