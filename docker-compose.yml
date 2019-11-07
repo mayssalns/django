@@ -9,12 +9,11 @@ services:
       POSTGRES_PASSWORD : 'admin'
     ports:
       - "5432:5432"
+    restart: always
 
   app:
     build: .
-    command: python InternLibrary/manage.py runserver 0.0.0.0:8000
-    command: python IternLibrary/manage.py makemigrations
-    command: python InternLibrary/manage.py migrate
+    command: bash -c "python InternLibrary/manage.py migrate && python  InternLibrary/manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
